@@ -1,4 +1,4 @@
-import { GitHubResultWrapper } from './../../interfaces/git-hub-result-wrapper';
+import { GitHubResultWrapper } from '../../interfaces/git-hub-result-wrapper';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GithubServiceService {
+export class GithubService {
   constructor(private http: HttpClient) {}
 
   fetchRepositories(term: string): Observable<unknown[]> {

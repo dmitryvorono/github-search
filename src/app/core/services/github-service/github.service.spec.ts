@@ -1,19 +1,19 @@
-import { GitHubResultWrapper } from './../../interfaces/git-hub-result-wrapper';
 import { environment } from 'src/environments/environment';
 import { TestBed, tick } from '@angular/core/testing';
 
-import { GithubServiceService } from './github-service.service';
+import { GithubService } from './github.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { testResultWrapper } from 'src/test-tools/test-result-wrapper';
 
-describe('GithubServiceService', () => {
-  let service: GithubServiceService;
+describe('GithubService', () => {
+  let service: GithubService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(GithubServiceService);
+    service = TestBed.inject(GithubService);
   });
 
   it('should be created', () => {
@@ -25,14 +25,9 @@ describe('GithubServiceService', () => {
   });
 
   describe('fetchRepositories', () => {
-    const testResult: GitHubResultWrapper = {
-      total_count: 3,
-      incomplete_results: false,
-      items: ['ololo', 'lalatoto', 'ububu'],
-    };
     let spy: any;
     beforeEach(() => {
-      spy = spyOn(service['http'], 'get').and.returnValue(of(testResult));
+      spy = spyOn(service['http'], 'get').and.returnValue(of(testResultWrapper));
     });
     it('should make a get request', () => {
       service.fetchRepositories('ololo');
@@ -43,7 +38,7 @@ describe('GithubServiceService', () => {
 
     it('should peel the result-wrapper', (done) => {
       service.fetchRepositories('ololo').subscribe((result) => {
-        expect(result).toEqual(testResult.items);
+        expect(result).toEqual(testResultWrapper.items);
         done();
       });
     });
