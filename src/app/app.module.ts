@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
