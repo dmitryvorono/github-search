@@ -14,6 +14,9 @@ const searchReducer = createReducer(
   )
 );
 
-export function reducer(state: SearchState, action: Action) {
+export function reducer(
+  state: SearchState | undefined,
+  action: Action
+): SearchState {
   return searchReducer(state, action);
 }
