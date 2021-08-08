@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ListOfCardsComponent implements OnInit {
   @Input() dataCards?: CardComponentProps[] | null;
   @Input() onClickfn?: (id$: Observable<number>) => Observable<any>;
+  @Input() fetching$?: Observable<boolean>;
 
   constructor() {}
 

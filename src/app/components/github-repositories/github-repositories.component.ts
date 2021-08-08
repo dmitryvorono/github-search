@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { filter, map, tap } from 'rxjs/operators';
 import { AppState } from 'src/app/core/store';
-import { selectRepositories } from 'src/app/core/store/search';
+import { selectFetching, selectRepositories } from 'src/app/core/store/search';
 import { CardComponentProps } from 'src/app/ui/interfaces/card-component-props';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -31,6 +31,8 @@ export class GithubRepositoriesComponent implements OnInit {
         }))
       )
     );
+
+  fetching$ = this.store.select(selectFetching);
 
   constructor(private store: Store<AppState>, private router: Router) {}
 

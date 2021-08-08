@@ -1,4 +1,5 @@
 <app-list-of-cards
   [dataCards]="repositories$ | async"
   [onClickfn]="onClickToCard"
+  [fetching$]="fetching$"
 ></app-list-of-cards>
