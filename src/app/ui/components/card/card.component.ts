@@ -1,5 +1,5 @@
 import { CardComponentProps } from './../../interfaces/card-component-props';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnDestroy {
-  @Input() props?: CardComponentProps;
+  @Input() props!: CardComponentProps;
   @Input() set onClickfn(
     value: ((id$: Observable<number>) => Observable<any>) | undefined
   ) {
@@ -36,6 +36,10 @@ export class CardComponent implements OnDestroy {
   }
 
   ngOnInit(): void {}
+
+  isTemplate(value: any): value is TemplateRef<any> {
+    return value instanceof TemplateRef;
+  }
 
   private isValueFnGuard(
     value: ((id$: Observable<number>) => Observable<any>) | undefined

@@ -1,6 +1,9 @@
+import { TemplateRef } from "@angular/core";
+
 export interface CardComponentProps {
   id: number;
   title: string;
-  description: string;
+  content: string | TemplateRef<any>;
   avatar: string;
+  [key: string]: any;
 }

@@ -1,4 +1,13 @@
-<p *ngIf="repository$ | async as repository">
-  {{repository | json}}
+<p *ngIf="repositoryCard$ | async as repositoryCard">
+  <app-card [props]="repositoryCard"></app-card>
 </p>
 
+<ng-template #repoContent let-item>
+  <p>
+    {{ item.description }}
+  </p>
+  <p>
+    <a [href]="item.html_url">{{ item.html_url }}</a>
+  </p>
+  <p>Open issues: {{ item.open_issues }}</p>
+</ng-template>

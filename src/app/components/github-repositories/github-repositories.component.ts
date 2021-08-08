@@ -26,7 +26,7 @@ export class GithubRepositoriesComponent implements OnInit {
         repositories.map((repo) => ({
           id: repo.id,
           title: repo.name,
-          description: repo.description,
+          content: repo.description,
           avatar: repo.owner.avatar_url,
         }))
       )
@@ -41,7 +41,6 @@ export class GithubRepositoriesComponent implements OnInit {
   onClickToCard = (id$: Observable<number>) =>
     id$.pipe(
       tap((id) => {
-        console.log(id);
         this.router.navigate(['/', 'repository', id]);
       })
     );
