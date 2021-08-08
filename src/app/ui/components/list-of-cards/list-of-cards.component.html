@@ -1,5 +1,5 @@
 <ul *ngIf="dataCards" class="list-of-cards">
   <li *ngFor="let cardData of dataCards" class="list-of-card__item">
-    <app-card [props]="cardData"></app-card>
+    <app-card [props]="cardData" [onClickfn]="onClickfn"></app-card>
   </li>
 </ul>

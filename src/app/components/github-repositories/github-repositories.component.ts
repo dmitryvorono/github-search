@@ -1,11 +1,12 @@
 import { GithubRepository } from './../../core/interfaces/github-repository';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { AppState } from 'src/app/core/store';
 import { selectRepositories } from 'src/app/core/store/search';
 import { CardComponentProps } from 'src/app/ui/interfaces/card-component-props';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-github-repositories',
@@ -23,6 +24,7 @@ export class GithubRepositoriesComponent implements OnInit {
       ),
       map((repositories: GithubRepository[]) =>
         repositories.map((repo) => ({
+          id: repo.id,
           title: repo.name,
           description: repo.description,
           avatar: repo.owner.avatar_url,
@@ -30,7 +32,15 @@ export class GithubRepositoriesComponent implements OnInit {
       )
     );
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {}
+
+  onClickToCard = (id$: Observable<number>) =>
+    id$.pipe(
+      tap((id) => {
+        console.log(id);
+        this.router.navigate(['/', 'repository', id]);
+      })
+    );
 }
