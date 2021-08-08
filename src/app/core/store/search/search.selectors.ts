@@ -6,3 +6,8 @@ export const selectRepositories = createSelector(
   (state: AppState) => state.search,
   (state: SearchState) => state.result
 );
+
+export const selectFetching = createSelector(
+  (state: AppState) => state.search,
+  (state: SearchState) => state.fetching
+);

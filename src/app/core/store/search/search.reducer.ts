@@ -4,9 +4,9 @@ import { SearchState, initialSearchState } from './search.state';
 
 const searchReducer = createReducer(
   initialSearchState,
-  on(toggleFetching, (state: SearchState) => ({
+  on(toggleFetching, (state: SearchState, { payload: { fetching } }) => ({
     ...state,
-    fetching: !state.fetching,
+    fetching,
   })),
   on(
     searchRepositoriesSuccess,

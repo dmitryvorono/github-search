@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { SearchActionsEnum, searchRepositoriesSuccess } from './search.actions';
+import {
+  SearchActionsEnum,
+  searchRepositoriesSuccess,
+  toggleFetching,
+} from './search.actions';
 import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
@@ -22,6 +26,20 @@ export class SearchEffects {
         this.gitHubService.fetchRepositories(action.payload.term)
       ),
       map((result) => searchRepositoriesSuccess({ payload: { result } }))
+    )
+  );
+
+  startFetching$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SearchActionsEnum.SearchRepositories),
+      map(() => toggleFetching({ payload: { fetching: true } }))
+    )
+  );
+
+  endFetching$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SearchActionsEnum.SearchRepositoriesSuccess),
+      map(() => toggleFetching({ payload: { fetching: false } }))
     )
   );
 }

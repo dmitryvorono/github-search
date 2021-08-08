@@ -17,4 +17,7 @@ export const searchRepositoriesSuccess = createAction(
   props<{ payload: { result: GithubRepository[] } }>()
 );
 
-export const toggleFetching = createAction(SearchActionsEnum.ToggleFetching);
+export const toggleFetching = createAction(
+  SearchActionsEnum.ToggleFetching,
+  props<{ payload: { fetching: boolean } }>()
+);
