@@ -1,0 +1,6 @@
+.list-of-cards {
+  list-style: none;
+  & > * ~ * {
+    margin-top: 1rem;
+  }
+}
