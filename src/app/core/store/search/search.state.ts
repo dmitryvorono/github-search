@@ -1,7 +1,9 @@
+import { GithubRepository } from "../../interfaces/github-repository";
+
 export interface SearchState {
   search: string;
   fetching: boolean;
-  result: unknown[] | null;
+  result: GithubRepository[] | null;
 }
 
 export const initialSearchState: SearchState = {

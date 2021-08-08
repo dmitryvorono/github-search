@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { GithubRepository } from '../../interfaces/github-repository';
 
 export enum SearchActionsEnum {
   SearchRepositories = '[Search] SEARCH_REPOSITORIES_STARTED',
@@ -13,7 +14,7 @@ export const searchRepositories = createAction(
 
 export const searchRepositoriesSuccess = createAction(
   SearchActionsEnum.SearchRepositoriesSuccess,
-  props<{ payload: { result: unknown[] } }>()
+  props<{ payload: { result: GithubRepository[] } }>()
 );
 
 export const toggleFetching = createAction(SearchActionsEnum.ToggleFetching);
