@@ -11,9 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { appEffects, appReducers } from './core/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GithubSearchComponent } from './components/github-search/github-search.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, GithubSearchComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
