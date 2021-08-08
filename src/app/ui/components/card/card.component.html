@@ -1,0 +1,19 @@
+<mat-card class="card" (click)="click$.next(props?.id)">
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      [ngStyle]="{ 'background-image': 'url(' + props?.avatar + ')' }"
+    ></div>
+    <mat-card-title>{{ props?.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-template [ngIf]="isTemplate(props.content)" [ngIfElse]="noTemplate">
+      <ng-template
+        *ngTemplateOutlet="props.content; context: { $implicit: props }"
+      ></ng-template>
+    </ng-template>
+    <ng-template #noTemplate>
+      <p>{{ props?.content }}</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
