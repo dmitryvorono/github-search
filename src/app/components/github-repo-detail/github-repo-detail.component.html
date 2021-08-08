@@ -1,1 +1,4 @@
-<p>github-repo-detail works!</p>
+<p *ngIf="repository$ | async as repository">
+  {{repository | json}}
+</p>
+

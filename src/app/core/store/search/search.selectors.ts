@@ -11,3 +11,11 @@ export const selectFetching = createSelector(
   (state: AppState) => state.search,
   (state: SearchState) => state.fetching
 );
+
+export const findRepository = createSelector(
+  (state: AppState) => state.search,
+  (state: SearchState, props: { id: number }) =>
+    state.result?.find(
+      (repo) => repo.id === props.id
+    )
+);
