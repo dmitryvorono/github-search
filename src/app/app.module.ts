@@ -13,9 +13,11 @@ import { appEffects, appReducers } from './core/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GithubSearchComponent } from './components/github-search/github-search.component';
 import { GithubRepositoriesComponent } from './components/github-repositories/github-repositories.component';
+import { GithubRepoDetailComponent } from './components/github-repo-detail/github-repo-detail.component';
+import { GithubRepoListComponent } from './components/github-repo-list/github-repo-list.component';
 
 @NgModule({
-  declarations: [AppComponent, GithubSearchComponent, GithubRepositoriesComponent],
+  declarations: [AppComponent, GithubSearchComponent, GithubRepositoriesComponent, GithubRepoDetailComponent, GithubRepoListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
