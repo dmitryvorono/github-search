@@ -1,4 +1,4 @@
-<ul class="list-of-cards">
+<ul *ngIf="dataCards" class="list-of-cards">
   <li *ngFor="let cardData of dataCards" class="list-of-card__item">
     <app-card [props]="cardData"></app-card>
   </li>

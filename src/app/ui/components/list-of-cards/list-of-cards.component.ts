@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListOfCardsComponent implements OnInit {
 
-  @Input() dataCards: CardComponentProps[] = [];
+  @Input() dataCards?: CardComponentProps[] | null;
 
   constructor() { }
 
