@@ -27,6 +27,10 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have the term prop', () => {
+    expect(component.term$).toBeTruthy();
+  });
+
   describe('render', () => {
     it('should render the mat-form-field component', () => {
       const materialFormFieldElement: DebugElement = fixture.debugElement.query(
